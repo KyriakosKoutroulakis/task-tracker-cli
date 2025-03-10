@@ -1,0 +1,20 @@
+{
+  "name": "task-tracker-cli",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "type": "module",
+  "bin": {
+    "task-tracker": "./bin/cli.js"
+  },
+  "scripts": {
+    "dev": "node ./src/app.js"
+  },
+  "keywords": [],
+  "author": "Kyriakos Koutroulakis",
+  "license": "ISC",
+  "description": "https://roadmap.sh/projects/task-tracker",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0"
+  }
+}
