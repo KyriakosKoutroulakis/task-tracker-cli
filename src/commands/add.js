@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 
-import { loadData, saveNewTask } from '../utils/fsHelpers.js';
+import { loadData, saveTasks } from '../utils/fsHelpers.js';
+import { MESSAGES } from '../utils/messages.js';
 import { createTask } from '../utils/taskHelpers.js';
 
 const checkStatusOptions = (status) => {
@@ -20,10 +21,9 @@ export const addTask = async (task, { status }) => {
     const newTask = createTask(tasksjson.length + 1, task, status);
     tasksjson.push(newTask);
 
-    const result = await saveNewTask(JSON.stringify(tasksjson));
-
-    console.log(chalk.green(result));
+    await saveTasks(JSON.stringify(tasksjson));
+    console.log(chalk.green(MESSAGES.ADD_NEW_TASK));
   } catch (error) {
-    console.error(chalk.red(error));
+    console.error(chalk.red(MESSAGES.ON_ERROR));
   }
 };
