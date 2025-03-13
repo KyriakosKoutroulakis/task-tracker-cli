@@ -1,8 +1,6 @@
 import { readFile, writeFile } from 'fs';
 import path from 'path';
 
-import { createTask } from './taskHelpers.js';
-
 const tasksFolder = path.join(process.cwd(), 'data/tasks.json');
 
 const loadFile = () => {
@@ -17,7 +15,7 @@ const loadFile = () => {
   });
 };
 
-const loadData = async () => {
+export const loadData = async () => {
   try {
     const bufData = await loadFile();
 
@@ -28,14 +26,9 @@ const loadData = async () => {
   }
 };
 
-export const saveNewTask = async (task, status) => {
-  const tasksJson = await loadData();
-  const newTask = createTask(tasksJson.length + 1, task, status);
-
-  tasksJson.push(newTask);
-
+export const saveNewTask = async (tasks) => {
   return new Promise((resolve, reject) => {
-    writeFile(tasksFolder, JSON.stringify(tasksJson), (err) => {
+    writeFile(tasksFolder, tasks, (err) => {
       if (err) {
         reject(new Error('Something went wrong! Your new task was not saved.'));
       } else {
@@ -46,6 +39,4 @@ export const saveNewTask = async (task, status) => {
 };
 
 export const updateTask = () => {};
-
 export const deleteTask = () => {};
-
