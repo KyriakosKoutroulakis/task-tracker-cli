@@ -2,31 +2,19 @@ import chalk from 'chalk';
 
 import { loadData, saveTasks } from '../utils/fsHelpers.js';
 import { MESSAGES } from '../utils/messages.js';
-
-const removeTaskIfExists = (id, tasksArr) => {
-  let taskIdExists = false;
-
-  const newTasksList = tasksArr.filter(e => {
-    if (e.id === id){
-      taskIdExists = true;
-    }
-    return e.id !== id;
-  });
-
-  return [newTasksList, taskIdExists];
-};
+import { removeTaskIfExists } from '../utils/taskHelpers.js';
 
 export const deleteTask = async (id) => {
   const taskId = Number(id);
 
   if (isNaN(taskId)) {
-    console.log('IDs are numeric only values..');
+    console.log(MESSAGES.NaN_ERROR);
     return;
   }
 
   try {
     const tasksjson = await loadData();
-    const [newTasksList, taskExists] = removeTaskIfExists(taskId, tasksjson);
+    const [taskExists, newTasksList] = removeTaskIfExists(taskId, tasksjson);
 
     if (!taskExists) {
       console.log(chalk.red(`No task with the id of ${chalk.bold(taskId)} exists!`));

@@ -2,17 +2,12 @@ import chalk from 'chalk';
 
 import { loadData, saveTasks } from '../utils/fsHelpers.js';
 import { MESSAGES } from '../utils/messages.js';
-import { createTask } from '../utils/taskHelpers.js';
-
-const checkStatusOptions = (status) => {
-  return ['todo', 'in-progress', 'done'].includes(status) ? status : null;
-};
+import { checkStatusOptions, createTask } from '../utils/taskHelpers.js';
 
 export const addTask = async (task, { status }) => {
   const validStatus = checkStatusOptions(status);
-
-  if(!validStatus) {
-    console.log('Only *todo *in-progress *done are valid task statuses.');
+  if (!validStatus) {
+    console.log(MESSAGES.INVALID_STATUS);
     return;
   }
 
