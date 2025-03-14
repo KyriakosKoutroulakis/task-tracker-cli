@@ -14,8 +14,8 @@ export const deleteTask = async (id) => {
     const [taskExists, newTasksList] = removeTaskIfExists(taskId, tasksjson);
 
     if (!taskExists) {
-      console.log(chalk.red(`No task with the id of ${chalk.bold(taskId)} exists!`));
-      console.log(`Use the ${chalk.bold('task-tracker list')} command to see available tasks.`);
+      console.log(MESSAGES.ID_NOT_EXISTS);
+      console.log(MESSAGES.INFO);
       return;
     }
 

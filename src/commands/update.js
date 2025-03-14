@@ -27,8 +27,8 @@ export const updateTask = async (id, { status, desc }) => {
     const [taskIdExists, updatedTasksList] = updateTaskInArray(taskId, status, desc, tasksjson);
 
     if (!taskIdExists) {
-      console.log(chalk.red(`No task with the id of ${chalk.bold(taskId)} exists!`));
-      console.log(`Use the ${chalk.bold('task-tracker list')} command to see available tasks.`);
+      console.log(MESSAGES.ID_NOT_EXISTS);
+      console.log(MESSAGES.INFO);
       return;
     }
 

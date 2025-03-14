@@ -7,6 +7,8 @@ export const MESSAGES = {
   ON_ERROR: `> ${chalk.red('Something went wrong! Operation did not complete.')}`,
   NaN_ERROR: `> Task id is a ${chalk.bold('numeric')} only value`,
   INVALID_STATUS: `> Only ${chalk.bold('*todo *in-progress *done')} are valid task statuses.`,
-  INVALID_LIST_STATUS: `> Only ${chalk.bold('*all *todo *in-progress *done')} are valid list statuses.`,
+  INVALID_LIST_ARGS: `> Only ${chalk.bold('*all *todo *in-progress *done')} are valid list statuses.`,
   NO_DATA_PROVIDED: `> Please provide ${chalk.bold('status')} or ${chalk.bold('description')} for the task to be updated.`,
+  ID_NOT_EXISTS: `> ${chalk.red(`No task is associated with the ID provided.`)}`,
+  INFO: `> Use the ${chalk.bold('task-tracker list')} command to see the available tasks and their IDs.`,
 };
