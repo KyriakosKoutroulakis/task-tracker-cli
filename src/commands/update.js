@@ -1,5 +1,3 @@
-import chalk from 'chalk';
-
 import { loadData, saveTasks } from '../utils/fsHelpers.js';
 import { MESSAGES } from '../utils/messages.js';
 import { checkStatusOptions, updateTaskInArray } from '../utils/taskHelpers.js';
@@ -35,7 +33,7 @@ export const updateTask = async (id, { status, desc }) => {
     }
 
     await saveTasks(JSON.stringify(updatedTasksList));
-    console.log(chalk.green(MESSAGES.UPDATE_TASK));
+    console.log(MESSAGES.UPDATE_TASK);
   } catch (error) {
     console.log(MESSAGES.ON_ERROR);
   }

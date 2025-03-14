@@ -7,7 +7,7 @@
     "task-tracker": "./bin/cli.js"
   },
   "scripts": {
-    "dev": "node ./src/app.js"
+    "dev": "npm link"
   },
   "keywords": [],
   "author": "Kyriakos Koutroulakis",

@@ -1,8 +1,5 @@
 import { Command } from 'commander';
-
-import { addTask } from './commands/add.js';
-import { deleteTask } from './commands/delete.js';
-import { updateTask } from './commands/update.js';
+import * as tc from './commands/index.js';
 
 const program = new Command();
 
@@ -16,13 +13,13 @@ program
   .description('Add a new task')
   .argument('<string>', 'New task')
   .option('--status <string>', 'Status of the task [todo, in-progress, done]', 'todo')
-  .action(addTask);
+  .action(tc.addTask);
 
 program
   .command('delete')
   .description('Delete a task based on its id')
   .argument('<num>', 'Id of the task to be deleted')
-  .action(deleteTask);
+  .action(tc.deleteTask);
 
 program
   .command('update')
@@ -30,7 +27,13 @@ program
   .argument('<num>', 'Id of the task to be updated')
   .option('--status <string>', 'Status of the task [todo, in-progress, done]')
   .option('--desc <string>', 'New task description')
-  .action(updateTask);
+  .action(tc.updateTask);
+
+program
+  .command('list')
+  .description('List all available tasks or based on their status [all, todo, in-progress, done]')
+  .argument('<string>', 'Tasks status')
+  .action(tc.listTasks);
 
 export function run() {
   program.parse(process.argv);

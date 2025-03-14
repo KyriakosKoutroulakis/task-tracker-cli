@@ -1,12 +1,9 @@
-import chalk from 'chalk';
-
 import { loadData, saveTasks } from '../utils/fsHelpers.js';
 import { MESSAGES } from '../utils/messages.js';
 import { removeTaskIfExists } from '../utils/taskHelpers.js';
 
 export const deleteTask = async (id) => {
   const taskId = Number(id);
-
   if (isNaN(taskId)) {
     console.log(MESSAGES.NaN_ERROR);
     return;
@@ -23,8 +20,8 @@ export const deleteTask = async (id) => {
     }
 
     await saveTasks(JSON.stringify(newTasksList));
-    console.log(chalk.green(MESSAGES.DELETE_TASK));
+    console.log(MESSAGES.DELETE_TASK);
   } catch (error) {
-    console.error(chalk.red(MESSAGES.ON_ERROR));
+    console.error(MESSAGES.ON_ERROR);
   }
 };

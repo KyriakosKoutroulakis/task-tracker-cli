@@ -2,6 +2,6 @@
   "arrowParens": "always",
   "singleQuote": true,
   "semi": true,
-  "printWidth": 100,
+  "printWidth": 130,
   "bracketSpacing": true
 }
