@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-export const MESSAGES = {
+const MESSAGES = {
   ADD_NEW_TASK: `> ${chalk.green('New task saved successfully!')}`,
   DELETE_TASK: `> ${chalk.green('Task deleted successfully!')}`,
   UPDATE_TASK: `> ${chalk.green('Task has been updated successfully!')}`,
@@ -11,4 +11,11 @@ export const MESSAGES = {
   NO_DATA_PROVIDED: `> Please provide ${chalk.bold('status')} or ${chalk.bold('description')} for the task to be updated.`,
   ID_NOT_EXISTS: `> ${chalk.red(`No task is associated with the ID provided.`)}`,
   INFO: `> Use the ${chalk.bold('task-tracker list')} command to see the available tasks and their IDs.`,
+  EMPTY_ARRAY_ERROR: '> Currently you have no tasks.',
 };
+
+const constructEmptyArrayError = (status) => {
+  return `> No tasks found with ${chalk.bold(status)} status.`;
+};
+
+export { MESSAGES, constructEmptyArrayError };

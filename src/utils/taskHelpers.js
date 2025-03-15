@@ -2,27 +2,33 @@ const checkStatusOptions = (status) => {
   return ['todo', 'in-progress', 'done'].includes(status) ? status : null;
 };
 
+const createFormattedDate = () => {
+  const d = new Date();
+
+  return `${d.toLocaleDateString()} - ${d.toLocaleTimeString()}`;
+};
+
 const createTask = (id, task, status) => {
   return {
     id: id,
     description: task,
     status: status,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: createFormattedDate(),
+    updatedAt: createFormattedDate(),
   };
 };
 
 const updateTaskInArray = (id, status, desc, tasksArr) => {
   let taskIdExists = false;
 
-  const updatedTasksList = tasksArr.map((e) => {
-    if (e.id === id) {
-      e.status = status ? status : e.status;
-      e.description = desc ? desc : e.description;
-      e.updatedAt = new Date();
+  const updatedTasksList = tasksArr.map((t) => {
+    if (t.id === id) {
+      t.status = status ? status : t.status;
+      t.description = desc ? desc : t.description;
+      t.updatedAt = createFormattedDate();
       taskIdExists = true;
     }
-    return e;
+    return t;
   });
 
   return [taskIdExists, updatedTasksList];
@@ -31,14 +37,18 @@ const updateTaskInArray = (id, status, desc, tasksArr) => {
 const removeTaskIfExists = (id, tasksArr) => {
   let taskIdExists = false;
 
-  const updatedTasksList = tasksArr.filter((e) => {
-    if (e.id === id) {
+  const updatedTasksList = tasksArr.filter((t) => {
+    if (t.id === id) {
       taskIdExists = true;
     }
-    return e.id !== id;
+    return t.id !== id;
   });
 
   return [taskIdExists, updatedTasksList];
 };
 
-export { checkStatusOptions, createTask, updateTaskInArray, removeTaskIfExists };
+const listTasksBasedOnFilter = (filter, tasksArr) => {
+  return tasksArr.filter((t) => t.status === filter);
+};
+
+export { checkStatusOptions, createTask, updateTaskInArray, removeTaskIfExists, listTasksBasedOnFilter };

@@ -1,7 +1,11 @@
 import { readFile, writeFile } from 'fs';
+import { fileURLToPath } from 'url';
 import path from 'path';
 
-const tasksFolder = path.join(process.cwd(), 'data/tasks.json');
+// Get __dirname & __filename equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const tasksFolder = path.join(__dirname, '../jsons/tasks.json');
 
 const loadFile = () => {
   return new Promise((resolve, reject) => {
