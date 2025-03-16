@@ -1,5 +1,7 @@
-const checkStatusOptions = (status) => {
-  return ['todo', 'in-progress', 'done'].includes(status) ? status : null;
+import { randomInt } from 'crypto';
+
+const createUniqueId = () => {
+  return randomInt(1000, 9999);
 };
 
 const createFormattedDate = () => {
@@ -8,9 +10,13 @@ const createFormattedDate = () => {
   return `${d.toLocaleDateString()} - ${d.toLocaleTimeString()}`;
 };
 
-const createTask = (id, task, status) => {
+const checkStatusOptions = (status) => {
+  return ['todo', 'in-progress', 'done'].includes(status) ? status : null;
+};
+
+const createTask = (task, status) => {
   return {
-    id: id,
+    id: createUniqueId(),
     description: task,
     status: status,
     createdAt: createFormattedDate(),

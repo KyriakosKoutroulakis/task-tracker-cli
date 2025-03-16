@@ -11,7 +11,7 @@ export const addTask = async (task, { status }) => {
 
   try {
     const tasksjson = await loadData();
-    const newTask = createTask(tasksjson.length + 1, task, status);
+    const newTask = createTask(task, status);
     tasksjson.push(newTask);
 
     await saveTasks(JSON.stringify(tasksjson));
