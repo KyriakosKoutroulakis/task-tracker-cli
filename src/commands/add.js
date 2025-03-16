@@ -17,6 +17,8 @@ export const addTask = async (task, { status }) => {
     await saveTasks(JSON.stringify(tasksjson));
     console.log(MESSAGES.ADD_NEW_TASK);
   } catch (error) {
-    console.error(MESSAGES.ON_ERROR);
+    error.msg && error.msg.includes('no such file or directory')
+      ? console.error(MESSAGES.TASKS_FOLDER_NOT_EXIST)
+      : console.error(MESSAGES.ON_ERROR);
   }
 };

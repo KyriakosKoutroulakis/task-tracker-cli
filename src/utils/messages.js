@@ -1,6 +1,8 @@
 import chalk from 'chalk';
 
 const MESSAGES = {
+  INIT_APP: `> ${chalk.green('Everything seems in place! Enjoy ;-)')}`,
+  TASKS_FOLDER_NOT_EXIST: `> Please run ${chalk.bold('task-tracker init')} before anything else!`,
   ADD_NEW_TASK: `> ${chalk.green('New task saved successfully!')}`,
   DELETE_TASK: `> ${chalk.green('Task deleted successfully!')}`,
   UPDATE_TASK: `> ${chalk.green('Task has been updated successfully!')}`,

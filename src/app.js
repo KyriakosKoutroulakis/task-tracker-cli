@@ -8,6 +8,8 @@ program
   .description('A cli tool build in node.js to track your tasks and manage your to-do list.')
   .version('0.0.1');
 
+program.command('init').description('Initialize the cli app.').action(tc.initializeApp);
+
 program
   .command('add')
   .description('Add a new task')

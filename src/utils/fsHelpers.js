@@ -1,16 +1,39 @@
-import { readFile, writeFile } from 'fs';
+import { access, mkdirSync, readFile, writeFile } from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
 // Get __dirname & __filename equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const tasksFolder = path.join(__dirname, '../jsons/tasks.json');
+
+const tasksDir = path.join(__dirname, '../jsons');
+const tasksFile = path.join(__dirname, '../jsons/tasks.json');
+
+const createFolder = () => {
+  try {
+    mkdirSync(tasksDir);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
 
 const loadFile = () => {
   return new Promise((resolve, reject) => {
-    readFile(tasksFolder, (err, data) => {
+    readFile(tasksFile, (err, data) => {
       err ? reject(err) : resolve(data);
+    });
+  });
+};
+
+const checkIfTasksDirExists = () => {
+  return new Promise((resolve, reject) => {
+    access(tasksDir, (err) => {
+      if (err) {
+        const result = createFolder();
+
+        result ? resolve(result) : reject(result);
+      }
     });
   });
 };
@@ -28,10 +51,10 @@ const loadData = async () => {
 
 const saveTasks = async (tasks) => {
   return new Promise((resolve, reject) => {
-    writeFile(tasksFolder, tasks, (err) => {
-      err ? reject(true) : resolve(true);
+    writeFile(tasksFile, tasks, (err) => {
+      err ? reject({ error: true, msg: err.message }) : resolve(true);
     });
   });
 };
 
-export { loadData, saveTasks };
+export { checkIfTasksDirExists, loadData, saveTasks };
