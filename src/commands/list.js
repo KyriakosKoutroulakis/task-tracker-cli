@@ -18,5 +18,7 @@ export const listTasks = async (status) => {
       const filteredTasks = listTasksBasedOnFilter(status, tasksjson);
       filteredTasks.length > 0 ? console.table(filteredTasks) : console.log(constructEmptyArrayError(status));
     }
-  } catch (error) {}
+  } catch (error) {
+    console.error(MESSAGES.ON_ERROR);
+  }
 };
