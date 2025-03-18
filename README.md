@@ -19,46 +19,77 @@ Task tracker is a simple command line interface (CLI) build in node.js to track 
 
 **Open a terminal and clone the project repository**
 
-`git clone https://github.com/KyriakosKoutroulakis/task-tracker-cli.git`
+```
+git clone https://github.com/KyriakosKoutroulakis/task-tracker-cli.git
+```
 
 **Navigate to the project folder**
 
-`cd task-tracker-cli`
+```
+cd task-tracker-cli
+```
 
 **Install the dependencies**
 
-`npm i`
+```
+npm i
+```
 
 **Symlink the package locally**
 
-`npm run dev`
+```
+npm run dev
+```
 
 ### Examples using the app
 
-- Initialize the app
-  > `task-tracker init`
+##### Initialize the app
 
-- Add a new task
-  > `task-tracker add "This is a new task"`
-  > _or if you want to set a status_
-  > `task-tracker add "This is a new task" --status=done`
+```
+task-tracker init
+```
+##### Add a new task
 
-- Delete task
-  > _you delete a task by providing its unique id_
-  > `task-tracker delete 1212`
+```
+task-tracker add "This is a new task"
+```
 
-- Update a task
-  > _to update a task status_
-  > `task-tracker update --status=in-progress`
-  > _or update a task description_
-  > `task-tracker update --desc="This is an updated description"`
-  > _you can also combine both flags for ease of use_
+_or if you want to set a status_
 
-- List all tasks or based on status
-  > `task-tracker list all`
-  > `task-tracker list todo`
-  > `task-tracker list in-progress`
-  > `task-tracker list done`
+```
+task-tracker add "This is a new task" --status=done
+```
+##### Delete task
+
+_you delete a task by providing its unique id_
+
+```
+task-tracker delete 1212
+```
+##### Update a task
+
+_to update a task status_
+
+```
+task-tracker update --status=in-progress
+```
+
+_or update a task description_
+
+```
+task-tracker update --desc="This is an updated description"
+```  
+
+_you can also combine both flags for ease of use_
+
+##### List all tasks or based on status
+
+```
+task-tracker list all
+task-tracker list todo
+task-tracker list in-progress
+task-tracker list done
+```
 
 ### Sample JSON data
 
